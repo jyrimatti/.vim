@@ -524,10 +524,10 @@ snoremap <A-right> <C-O>w
 inoremap <S-left> <Left><C-o>v
 inoremap <S-right> <C-o>v
 
-nnoremap <S-A-left> <S-left>b
-nnoremap <S-A-right> <S-right>e
-inoremap <S-A-left> <left><S-left>b
-inoremap <S-A-right> <S-right>e
+nnoremap <S-A-left> <S-left>b<C-g>
+nnoremap <S-A-right> <S-right>e<C-g>
+inoremap <S-A-left> <left><S-left>b<C-g>
+inoremap <S-A-right> <S-right>e<C-g>
 snoremap <S-A-left> <C-O>b
 snoremap <S-A-right> <C-O>e
 vnoremap <S-A-left> b
@@ -540,10 +540,10 @@ nnoremap <D-right> g$
 inoremap <D-left> <C-O>g^
 inoremap <D-right> <C-O>g$
 "alternatively: vg^ to automatically enter visual mode first
-nnoremap <S-D-left> vg^ <S-left>
-nnoremap <S-D-right> vg$
-inoremap <S-D-left> <C-O>vg^ <S-left>
-inoremap <S-D-right> <C-O>vg$
+nnoremap <S-D-left> vg^ <S-left><C-g>
+nnoremap <S-D-right> vg$<S-left><C-g>
+inoremap <S-D-left> <left><C-O>vg^ <S-left><C-g>
+inoremap <S-D-right> <C-O>vg$<S-left><C-g>
 vnoremap <S-D-left> g^ <S-left>
 vnoremap <S-D-right> g$
 " best solution I could find. adding shift to the shortcut ends visual mode =(
