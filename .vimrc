@@ -478,6 +478,8 @@ nnoremap <silent> <Tab> :bnext<CR>
 autocmd FileType nerdtree noremap <buffer> <Tab> <Nop>
 autocmd FileType Tagbar noremap <buffer> <Tab> <Nop>
 
+autocmd FileType help noremap <buffer> <Esc> :q<CR>
+
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 command! -nargs=0 -bar Update if &modified 
