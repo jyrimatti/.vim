@@ -387,6 +387,8 @@ nnoremap <silent> <leader>pt :TogglePencil<cr>
 
 au BufEnter * nested :filetype detect
 
+let g:gitgutter_sign_column_always = 1
+
 " Code formatting
 au FileType haskell nnoremap <buffer> <F2> :%!stylish-haskell<CR>
 au FileType xml     nnoremap <buffer> <F2> :%!xmllint --format -<CR>
