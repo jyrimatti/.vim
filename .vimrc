@@ -226,12 +226,15 @@ set list listchars=tab:\ \ ,trail:·   " Display tabs and trailing spaces visual
 set nowrap                            " Don't wrap lines
 
 " Folds
-" =====
 set foldmethod=indent   " Fold based on indent
 set foldnestmax=5       " Deepest fold is 5 levels
-set nofoldenable        " Don't fold by default
-nnoremap <space> za
-"vnoremap <space> zf
+" Toggle folds with space, unless on outermost level
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+" Open all folds when opening file
+autocmd Syntax * normal zR
+
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
 " Completion
 " ==========
