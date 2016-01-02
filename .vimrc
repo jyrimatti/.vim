@@ -527,9 +527,11 @@ vnoremap <A-right> w
 snoremap <A-left> <C-O>b
 snoremap <A-right> <C-O>w
 
-" start selectionmode with empty selection
+" adjust selection in insert-mode to using bar-cursor instead of a box
 inoremap <S-left> <Left><C-o>v
 inoremap <S-right> <C-o>v
+inoremap <expr> <S-up> col('.') == 1 ? "<left><S-Left>g^<C-g>" : "<left><S-Up><S-right><C-g>"
+inoremap <S-down> <S-down><S-left><C-g>
 
 nnoremap <S-A-left> <S-left>b<C-g>
 nnoremap <S-A-right> <S-right>e<C-g>
