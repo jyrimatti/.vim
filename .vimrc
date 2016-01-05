@@ -145,7 +145,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " =============================================================================
 
 " detect filetype whenever a buffer is entered
-au BufEnter * nested :filetype detect
+autocmd BufEnter * nested :filetype detect
 
 " scroll windows with ctrl-left and ctrl-right
 nnoremap <silent> <C-Left> :wincmd h<CR>
@@ -339,7 +339,7 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_javascript_checkers = ["#eslint"]
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_enable_balloons = 0
+let g:syntastic_enable_balloons = 1
 
 
 
@@ -468,7 +468,13 @@ let g:tagbar_map_closefold = "<Left>"
 
 
 
-" Omnifuncs by filetype
+" =============================================================================
+" FileTypes
+" =============================================================================
+
+
+
+" Others
 " =============================================================================
 
 autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
@@ -476,14 +482,6 @@ autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType markdown   setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
-
-
-
-
-
-" =============================================================================
-" FileTypes
-" =============================================================================
 
 
 
@@ -563,6 +561,9 @@ autocmd FileType haskell nnoremap <buffer> <C-x><C-r> :GhciReload<CR>
 
 " show some type info on balloon tip
 function! HaskellBalloonExpr()
+    if empty(expand('%'))
+        return ''
+    endif
     redir => output1
     silent execute '!hdevtools type % '.v:beval_lnum.' '.v:beval_col
     redir END
