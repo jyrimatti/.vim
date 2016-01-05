@@ -35,6 +35,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/IndexedSearch'
 
 " autocomplete
 Plugin 'scrooloose/syntastic'
@@ -194,6 +195,12 @@ inoremap <2-LeftMouse> <c-o>*
 
 " use ESC to remove search highlight
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+
+" search within selection
+snoremap / <Esc>/\%V
+snoremap ? <Esc>?\%V
+" you can substitute within selection by first searching and then:
+" :%s//newstr/g
 
 
 
