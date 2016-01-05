@@ -128,6 +128,12 @@ set shell=zsh
 set mouse=a                     " Enable mouse use in all modes
 set title                       " Set window title
 
+" make popup menu sane
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
 " try to use select-mode instead of visual-mode everywhere
 set selectmode=key,mouse,cmd
 set keymodel=startsel,stopsel
@@ -421,17 +427,7 @@ let g:haskell_enable_static_pointers = 1
 " =============================================================================
 
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ulti_expand_or_jump_res = 0
-function! ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+let g:UltiSnipsExpandTrigger = "<CR>"
 
 
 
