@@ -132,6 +132,9 @@ set title                       " Set window title
 set selectmode=key,mouse,cmd
 set keymodel=startsel,stopsel
 
+" allow entering command mode while in select mode
+snoremap : <Esc>:
+
 " turn Off Swap Files
 set noswapfile
 set nobackup
