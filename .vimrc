@@ -10,7 +10,7 @@ filetype off
 " Add vundle to our lookup path
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " theming
 Plugin 'altercation/vim-colors-solarized'
@@ -32,7 +32,7 @@ Plugin 'tfnico/vim-gradle'
 "javascript
 Plugin 'marijnh/tern_for_vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/IndexedSearch'
