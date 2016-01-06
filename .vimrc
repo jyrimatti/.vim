@@ -423,7 +423,7 @@ let g:haskell_enable_static_pointers = 1
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsExpandTrigger="<nop>"
 let g:ulti_expand_or_jump_res = 0
-function ExpandSnippetOrCarriageReturn()
+function! ExpandSnippetOrCarriageReturn()
     let snippet = UltiSnips#ExpandSnippetOrJump()
     if g:ulti_expand_or_jump_res > 0
         return snippet
@@ -450,6 +450,8 @@ let g:ctrlp_match_window = 'results:20'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_max_files = 100000
+
+inoremap <C-p> <Esc>:CtrlP<CR>
 
 
 
