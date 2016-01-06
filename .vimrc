@@ -352,17 +352,23 @@ let g:syntastic_enable_balloons = 1
 
 let NERDTreeShowHidden=1
 let NERDTreeSortHiddenFirst=1
+let NERDTreeChDirMode=2
 let NERDTreeRespectWildIgnore=1
 let NERDTreeMouseMode=2
 let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
+let NERDTreeCascadeOpenSingleChildDir=0
 
 " toggle with ctrl-tab and zoom to current file while opening
 nnoremap <expr> <C-Tab> g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : ':NERDTreeFind<CR>'
 
+" use doubleclick to change tree root
+autocmd FileType nerdtree nmap <buffer> <2-LeftMouse> oC
+
 " open/close hierarchy with left/right
+" TODO: closing dirnodes still doesn't work like in normal editors...
 autocmd FileType nerdtree nmap <buffer> <Right> o
-autocmd FileType nerdtree nmap <buffer> <Left> o
+autocmd FileType nerdtree nmap <buffer> <Left> ox
 
 " open automatically if no files specifies
 autocmd StdinReadPre * let s:std_in=1
