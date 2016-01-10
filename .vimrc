@@ -29,17 +29,29 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'tfnico/vim-gradle'
 
-"javascript
+" javascript
 Plugin 'marijnh/tern_for_vim'
 
+" CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
+
+" Airline
 Plugin 'bling/vim-airline'
+
+" git status on the gutter
 Plugin 'airblade/vim-gitgutter'
+
+" display some search info
 Plugin 'vim-scripts/IndexedSearch'
+
+" :KeepView to remember cursor position
+Plugin 'vim-scripts/anwolib'
 
 " autocomplete
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+" When updated, run:
+" nix-shell -p cmake -p nodejs -p go -p nodePackages.typescript --command "cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --gocode-completer --tern-completer"
 
 " file tree browser
 Plugin 'scrooloose/nerdtree'
