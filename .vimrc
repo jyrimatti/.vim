@@ -198,7 +198,8 @@ nnoremap <2-LeftMouse> *
 inoremap <2-LeftMouse> <c-o>*
 
 " use ESC to remove search highlight
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <expr> <Esc> (v:hlsearch ? ':nohlsearch<CR>' : '<Esc>')
+inoremap <silent> <expr> <Esc> (v:hlsearch ? '<C-o>:nohlsearch<CR>' : '<Esc>')
 
 " search within selection
 snoremap / <Esc>/\%V
