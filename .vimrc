@@ -505,7 +505,6 @@ let g:xml_syntax_folding=1
 autocmd FileType xml setlocal foldmethod=syntax
 
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType xml nnoremap <buffer> <F2> :%!xmllint --format -<CR>
 
 
 
@@ -553,23 +552,8 @@ let g:tagbar_type_haskell = {
 \ }
 
 " Close Autocomplete and then Hoogle with ESC
-autocmd FileType haskell nnoremap <buffer> <expr> <Esc>                           bufnr(g:hoogle_search_buf_name) >= 0 ? "\<C-o>:HoogleClose<CR>" : "\<Esc>"
-autocmd FileType haskell inoremap <buffer> <expr> <Esc> pumvisible() ? "\<C-e>" : bufnr(g:hoogle_search_buf_name) >= 0 ? "\<C-o>:HoogleClose<CR>" : "\<Esc>"
-
-" TODO: this some easier way
-autocmd FileType haskell nnoremap <buffer> <F2> :%!stylish-haskell<CR>
-
-" TODO: this some easier way
-autocmd FileType haskell nnoremap <buffer> <silent> <F4> :GhcModExpand<CR>
-autocmd FileType haskell nnoremap <buffer> <F5> :Hoogle
-autocmd FileType haskell nnoremap <buffer> <F6> :HoogleInfo
-
-" TODO: this some easier way
-autocmd FileType haskell nnoremap <buffer> <C-x><C-x> :GhciRange<CR>
-autocmd FileType haskell snoremap <buffer> <C-x><C-x> :GhciRange<CR>
-autocmd FileType haskell vnoremap <buffer> <C-x><C-x> :GhciRange<CR>
-autocmd FileType haskell nnoremap <buffer> <C-x><C-f> :GhciFile<CR>
-autocmd FileType haskell nnoremap <buffer> <C-x><C-r> :GhciReload<CR>
+autocmd FileType haskell nnoremap <buffer> <silent> <expr> <Esc>                           bufnr(g:hoogle_search_buf_name) >= 0 ? ":HoogleClose<CR>" : (v:hlsearch ? ':nohlsearch<CR>' : '<Esc>')
+autocmd FileType haskell inoremap <buffer> <silent> <expr> <Esc> pumvisible() ? "\<C-e>" : bufnr(g:hoogle_search_buf_name) >= 0 ? "\<C-o>:HoogleClose<CR>" : (v:hlsearch ? '<C-o>:nohlsearch<CR>' : '<Esc>')
 
 " show some type info on balloon tip
 function! HaskellBalloonExpr()
@@ -591,3 +575,37 @@ endfunction
 autocmd FileType haskell setlocal balloonexpr=HaskellBalloonExpr()
 autocmd FileType haskell setlocal ballooneval
 
+
+
+" =============================================================================
+" Additional commands to the Menu. Do I want keymappings for some of these?
+" =============================================================================
+
+autocmd BufEnter * if &filetype == 'xml' |
+    \ :amenu .10    Actions.Format            :%!xmllint --format -<CR>|
+    \ :sunmenu      Actions.Format                                     |
+    \ :smenu .11    Actions.FormatSelection   :!xmllint --format -<CR>|
+    \ endif
+
+autocmd BufEnter * if &filetype == 'haskell' |
+    \ :amenu .10    Actions.Format              :%!stylish-haskell<CR>|
+    \ :sunmenu      Actions.Format                                    |
+    \ :smenu .11    Actions.FormatSelection     :!stylish-haskell<CR>|
+    \ :amenu .12    Actions.HLint.ApplySingle   :KeepView :execute "%! hlint - --refactor  --refactor-options=\"--pos ".line('.').','.col('.')."\""<CR>|
+    \ :amenu .13    Actions.HLint.ApplyAll      :%!hlint - --refactor <CR>|
+    \ :amenu .20.10 Actions.GhcMod.Type         :GhcModType<CR>|
+    \ :amenu .20.11 Actions.GhcMod.TypeInsert   :GhcModTypeInsert<CR>|
+    \ :amenu .20.12 Actions.GhcMod.Expand       :GhcModExpand<CR>|
+    \ :amenu .20.13 Actions.GhcMod.SplitFunCase :GhcModSplitFunCase<CR>|
+    \ :amenu .20.14 Actions.GhcMod.SigCodegen   :GhcModSigCodegen<CR>|
+    \ :amenu .30.10 Actions.Hoogle.Hoogle       :Hoogle<CR>|
+    \ :amenu .30.11 Actions.Hoogle.HoogleInfo   :HoogleInfo<CR>|
+    \ :amenu .40.10 Actions.Ghci.Range          :GhciRange<CR>|
+    \ :amenu .40.11 Actions.Ghci.File           :GhciFile<CR>|
+    \ :amenu .40.12 Actions.Ghci.Reload         :GhciReload<CR>|
+    \ endif
+
+autocmd BufLeave * nested :silent! :aunmenu Actions
+
+autocmd FileType haskell nnoremap <silent> <buffer> <D-1> :popup Actions<CR>
+autocmd FileType haskell inoremap <silent> <buffer> <D-1> <C-o>:popup Actions<CR>
