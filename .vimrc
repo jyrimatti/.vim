@@ -89,6 +89,7 @@ Plugin 'mpickering/hlint-refactor-vim'
 Plugin 'Twinside/vim-haskellFold'
 Plugin 'vim-scripts/Superior-Haskell-Interaction-Mode-SHIM'
 Plugin 'enomsg/vim-haskellConcealPlus'
+Plugin 'glittershark/vim-hare'
 
 " TODO:
 " Provides Sublime-Text like smart completion of braces, parens and such
@@ -418,6 +419,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_cache_omnifunc = 0
 
 
+
 " NecoGHC
 " =============================================================================
 
@@ -502,6 +504,18 @@ let g:tagbar_map_closefold = "<Left>"
 
 
 
+" HaRe
+" =============================================================================
+
+" these still todo?
+command!          Hdemote    execute s:HareDemote()
+command! -nargs=1 Hdupdef    execute s:HareDupdef(<f-args>)
+command!          Hliftone   execute s:HareLiftOneLevel()
+
+
+
+
+
 " =============================================================================
 " FileTypes
 " =============================================================================
@@ -539,6 +553,8 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:no_haskell_conceal = 1
 
 let g:hoogle_search_count = '10 -d $NIX_SHELL_ROOT/hoogledb'
+
+"let g:syntastic_haskell_checkers = ['ghc_mod', 'hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_args = '-g-Wall'
 
 let g:tagbar_type_haskell = {
@@ -613,21 +629,31 @@ autocmd BufEnter * if &filetype == 'haskell' |
     \ :amenu .10    Actions.Format              :%!stylish-haskell<CR>|
     \ :sunmenu      Actions.Format                                    |
     \ :smenu .11    Actions.FormatSelection     :!stylish-haskell<CR>|
-    \ :amenu .12    Actions.HLint.ApplySingle   :KeepView :execute "%! hlint - --refactor  --refactor-options=\"--pos ".line('.').','.col('.')."\""<CR>|
-    \ :amenu .13    Actions.HLint.ApplyAll      :%!hlint - --refactor <CR>|
-    \ :amenu .20.10 Actions.GhcMod.Type         :GhcModType<CR>|
-    \ :amenu .20.11 Actions.GhcMod.TypeInsert   :GhcModTypeInsert<CR>|
-    \ :amenu .20.12 Actions.GhcMod.Expand       :GhcModExpand<CR>|
-    \ :amenu .20.13 Actions.GhcMod.SplitFunCase :GhcModSplitFunCase<CR>|
-    \ :amenu .20.14 Actions.GhcMod.SigCodegen   :GhcModSigCodegen<CR>|
-    \ :amenu .30.10 Actions.Hoogle.Hoogle       :Hoogle<CR>|
-    \ :amenu .30.11 Actions.Hoogle.HoogleInfo   :HoogleInfo<CR>|
-    \ :amenu .40.10 Actions.Ghci.Range          :GhciRange<CR>|
-    \ :amenu .40.11 Actions.Ghci.File           :GhciFile<CR>|
-    \ :amenu .40.12 Actions.Ghci.Reload         :GhciReload<CR>|
+    \ :smenu .12    Actions.Pointfree           :!pointfree --stdin<CR>|
+    \ :amenu .20    Actions.HLint.ApplySingle   :KeepView :execute "%! hlint - --refactor  --refactor-options=\"--pos ".line('.').','.col('.')."\""<CR>|
+    \ :amenu .21    Actions.HLint.ApplyAll      :%!hlint - --refactor <CR>|
+    \ :amenu .30.10 Actions.GhcMod.Type         :GhcModType<CR>|
+    \ :amenu .30.11 Actions.GhcMod.TypeInsert   :GhcModTypeInsert<CR>|
+    \ :amenu .30.12 Actions.GhcMod.Expand       :GhcModExpand<CR>|
+    \ :amenu .30.13 Actions.GhcMod.SplitFunCase :GhcModSplitFunCase<CR>|
+    \ :amenu .30.14 Actions.GhcMod.SigCodegen   :GhcModSigCodegen<CR>|
+    \ :amenu .40.10 Actions.Hoogle.Hoogle       :Hoogle<CR>|
+    \ :amenu .40.11 Actions.Hoogle.HoogleInfo   :HoogleInfo<CR>|
+    \ :amenu .50.10 Actions.Ghci.Selection      :GhciSelection<CR>|
+    \ :amenu .50.11 Actions.Ghci.Range          :GhciRange<CR>|
+    \ :amenu .50.12 Actions.Ghci.File           :GhciFile<CR>|
+    \ :amenu .50.13 Actions.Ghci.Reload         :GhciReload<CR>|
+    \ :amenu .60.10 Actions.Hare.Rename         :Hrename<CR>|
+    \ :amenu .60.11 Actions.Hare.LiftToTop      :Hlifttotop<CR>|
+    \ :amenu .60.12 Actions.Hare.LiftOne        :Hliftone<CR>|
+    \ :amenu .60.13 Actions.Hare.IfToCase       :Hiftocase<CR>|
+    \ :amenu .60.14 Actions.Hare.DupDef         :Hdupdef<CR>|
+    \ :amenu .60.15 Actions.Hare.Demote         :Hdemote<CR>|
     \ endif
 
 autocmd BufLeave * nested :silent! :aunmenu Actions
 
 autocmd FileType haskell nnoremap <silent> <buffer> <D-1> :popup Actions<CR>
 autocmd FileType haskell inoremap <silent> <buffer> <D-1> <C-o>:popup Actions<CR>
+autocmd FileType haskell snoremap <silent> <buffer> <D-1> <C-o>:<C-W><C-W><C-W><C-W><C-W>popup Actions<CR>gv
+
