@@ -73,6 +73,10 @@ Plugin 'tpope/vim-fugitive'
 " shell in buffer
 Plugin 'jewes/Conque-Shell'
 
+" sane clipboard functionality
+Plugin 'svermeulen/vim-easyclip'
+Plugin 'tpope/vim-repeat'
+
 " haskell
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'eagletmt/ghcmod-vim'
@@ -128,6 +132,10 @@ set history=1000                " Store lots of :cmdline history (its not 1990)
 set shellpipe=2>/dev/null>      " Don't dump distracting text to terminal during searches!
 set whichwrap+=<,>,[,]          " left/right wrap lines
 set clipboard=unnamed           " Use system clipboard
+
+" Make backspace not replace clipboard.
+" Apparantly Ultisnips screws this up, therefore VimEnter.
+autocmd VimEnter * snoremap <BS> <C-g>"_d
 
 set showcmd                     " Show incomplete cmds down the bottom
 set guicursor=a:block-Cursor-blinkon0
