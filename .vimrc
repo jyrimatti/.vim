@@ -73,6 +73,9 @@ Plugin 'tpope/vim-fugitive'
 " shell in buffer
 Plugin 'jewes/Conque-Shell'
 
+Plugin 'Shougo/vimproc'
+" When updated, run: cd ~/.vim/bundle/vimproc && make
+
 " sane clipboard functionality
 Plugin 'svermeulen/vim-easyclip'
 Plugin 'tpope/vim-repeat'
@@ -80,7 +83,6 @@ Plugin 'tpope/vim-repeat'
 " haskell
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'eagletmt/ghcmod-vim'
-Plugin 'Shougo/vimproc.vim' " dep of ghc-mod
 Plugin 'bitc/vim-hdevtools'
 Plugin 'eagletmt/neco-ghc'
 Plugin 'Twinside/vim-hoogle'
@@ -277,7 +279,7 @@ autocmd Syntax * normal zR
 set wildmenu " Enable ctrl-n and ctrl-p to scroll thru matches
 set wildmode=longest,list,full
 set wildignore=*.o,*.obj,*~,*.pkg,*.dmg,*.pdf,*.wav,*.mov,*.mp3,*.mp4,*.ogg,*.tar,*.gz,*.tgz,*.zip,*.m4v,*.jar,*.doc,*.ppt,*.xls,*.docx,*.pptx,*.xlsx,*.class,.DS_Store,*.svg,*.ttf,*.woff,*.bin,*.dll,*.pyc     " Stuff to ignore when tab completing
-set wildignore+=*vim/backups*,*/.hg/*,*/.git/*,*/.svn/*,*/Applications/*,*/Library/*,*/System/*,*/Volumes/*,*/nix/*,*/.emacs/*,*/.emacs.d/*,*/.vim/*,*/.npm/*,*/.m2/repository/*,*/.vagrant.d/*,*/target/*,*/build/*,*/node_modules/*,*/bower_components/*,*/.gradle/daemon/*,*/.gradle/wrapper/*,*/.gradle/caches/*,*/.Trash/*,*/.cache/*,*/.metadata/*,*/.dist-buildwrapper/*,*/dist/*,*/bin/*,*/.node-gyp/*,*/.qgis2/*,*/hoogledb/*,*/.sqldeveloper/*,*/Microsoft\ User\ Data/*
+set wildignore+=*vim/backups*,*/.hg/*,*/.git/*,*/.svn/*,*/Applications/*,*/Library/*,*/System/*,*/Volumes/*,*/nix/*,*/.emacs/*,*/.emacs.d/*,*/.npm/*,*/.m2/repository/*,*/.vagrant.d/*,*/target/*,*/build/*,*/node_modules/*,*/bower_components/*,*/.gradle/daemon/*,*/.gradle/wrapper/*,*/.gradle/caches/*,*/.Trash/*,*/.cache/*,*/.metadata/*,*/.dist-buildwrapper/*,*/dist/*,*/bin/*,*/.node-gyp/*,*/.qgis2/*,*/hoogledb/*,*/.sqldeveloper/*,*/Microsoft\ User\ Data/*
 
 
 
@@ -400,6 +402,15 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close when last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+
+" VimShell
+" =============================================================================
+
+let g:vimshell_data_directory="/Users/jyrila/.cache/vimshell"
+let g:vimshell_temporary_directory="/Users/jyrila/.cache/vimshell"
+let g:vimshell_prompt='>'
 
 
 
