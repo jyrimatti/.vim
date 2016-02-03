@@ -245,7 +245,9 @@ set expandtab
 set nowrap
 
 " indent both ways with Tab/Shift-Tab
+inoremap <Tab> >
 vnoremap <Tab> >
+inoremap <S-Tab> <
 vnoremap <S-Tab> <
 
 " display tabs and trailing spaces visually
