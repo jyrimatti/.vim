@@ -281,9 +281,9 @@ set foldlevelstart=50
 " =============================================================================
 
 set wildmenu " Enable ctrl-n and ctrl-p to scroll thru matches
-set wildmode=longest,list,full
+set wildmode=full
 set wildignore=*.o,*.obj,*~,*.pkg,*.dmg,*.pdf,*.wav,*.mov,*.mp3,*.mp4,*.ogg,*.tar,*.gz,*.tgz,*.zip,*.m4v,*.jar,*.doc,*.ppt,*.xls,*.docx,*.pptx,*.xlsx,*.class,.DS_Store,*.svg,*.ttf,*.woff,*.bin,*.dll,*.pyc     " Stuff to ignore when tab completing
-set wildignore+=*vim/backups*,*/.hg/*,*/.git/*,*/.svn/*,*/Applications/*,*/Library/*,*/System/*,*/Volumes/*,*/nix/*,*/.emacs/*,*/.emacs.d/*,*/.npm/*,*/.m2/repository/*,*/.vagrant.d/*,*/target/*,*/build/*,*/node_modules/*,*/bower_components/*,*/.gradle/daemon/*,*/.gradle/wrapper/*,*/.gradle/caches/*,*/.Trash/*,*/.cache/*,*/.metadata/*,*/.dist-buildwrapper/*,*/dist/*,*/bin/*,*/.node-gyp/*,*/.qgis2/*,*/hoogledb/*,*/.sqldeveloper/*,*/Microsoft\ User\ Data/*
+set wildignore+=*vim/backups*,*/.hg/*,*/.git/*,*/.svn/*,*/Applications/*,*/Library/*,*/System/*,*/Volumes/*,*/nix/*,*/.emacs/*,*/.emacs.d/*,*/.npm/*,*/.m2/repository/*,*/.vagrant.d/*,*/bower_components/*,*/.gradle/daemon/*,*/.gradle/wrapper/*,*/.gradle/caches/*,*/.Trash/*,*/.cache/*,*/.metadata/*,*/.node-gyp/*,*/.qgis2/*,*/hoogledb/*,*/Microsoft\ User\ Data/*
 
 
 
