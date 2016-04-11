@@ -191,6 +191,16 @@ nnoremap <silent> <C-S-Right> :bnext<CR>
 inoremap <silent> <C-S-Right> <c-o>:bnext<CR>
 snoremap <silent> <C-S-Right> <ESC><c-o>:bnext<CR>
 
+" close current buffer with Ctrl-q
+nnoremap <C-q> :bp <BAR> bd #<CR>
+inoremap <C-q> <c-o>:bp <BAR> bd #<CR>
+snoremap <C-q> <ESC><c-o>:bp <BAR> bd #<CR>
+
+" open new empty buffer with Ctrl-n
+nnoremap <C-n> :enew<CR>i
+inoremap <C-n> <c-o>:enew<CR>i
+snoremap <C-n> <ESC><c-o>:enew<CR>i
+
 " close help with ESC
 autocmd FileType help noremap <buffer> <Esc> :q<CR>
 
