@@ -292,13 +292,13 @@ set wildignore+=*vim/backups*,*/.hg/*,*/.git/*,*/.svn/*,*/Applications/*,*/Libra
 
 " ALT-: one word forward / back
 nnoremap <A-left> b
-nnoremap <A-right> w
+nnoremap <A-right> e
 inoremap <A-left> <C-O>b
-inoremap <A-right> <C-O>w
+inoremap <A-right> <C-O>e
 vnoremap <A-left> b
-vnoremap <A-right> w
+vnoremap <A-right> e
 snoremap <A-left> <C-O>b
-snoremap <A-right> <C-O>w
+snoremap <A-right> <C-O>e
 
 " CMD-: smart home key for indented lines: go to first non-blank character (not
 " start of line) of display line (not numbered line)
@@ -331,12 +331,12 @@ vnoremap <S-A-left> b
 vnoremap <S-A-right> e
 
 " SHIFT-CMD-: select whole line
-nnoremap <S-D-left> vg^ <S-left><C-g>
-nnoremap <S-D-right> vg$<S-left><C-g>
-inoremap <S-D-left> <left><C-O>vg^ <S-left><C-g>
-inoremap <S-D-right> <C-O>vg$<S-left><C-g>
-vnoremap <S-D-left> g^ <S-left>
-vnoremap <S-D-right> g$
+nnoremap <S-D-left> v^ <S-left><C-g>
+nnoremap <S-D-right> v$<S-left><C-g>
+inoremap <S-D-left> <left><C-O>v^ <S-left><C-g>
+inoremap <S-D-right> <C-O>v$<S-left><C-g>
+vnoremap <S-D-left> ^ <S-left>
+vnoremap <S-D-right> $
 
 " adjust selection in insert-mode to using bar-cursor instead of a box
 " since otherwise it selects too many/few characters
