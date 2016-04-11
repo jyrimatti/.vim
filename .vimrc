@@ -586,7 +586,7 @@ let g:no_haskell_conceal = 1
 
 let g:hoogle_search_count = '10 -d $NIX_SHELL_ROOT/hoogledb'
 
-"let g:syntastic_haskell_checkers = ['ghc_mod', 'hdevtools', 'hlint']
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_haskell_hdevtools_args = '-g-Wall'
 
 let g:tagbar_type_haskell = {
