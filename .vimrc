@@ -177,12 +177,19 @@ autocmd BufEnter * nested :filetype detect
 
 " scroll windows with ctrl-left and ctrl-right
 nnoremap <silent> <C-Left> :wincmd h<CR>
+inoremap <silent> <C-Left> <c-o>:wincmd h<CR>
+snoremap <silent> <C-Left> <ESC><c-o>:wincmd h<CR>
 nnoremap <silent> <C-Right> :wincmd l<CR>
+inoremap <silent> <C-Right> <c-o>:wincmd l<CR>
+snoremap <silent> <C-Right> <ESC><c-o>:wincmd l<CR>
 
-" scroll buffers with Tab, except in NERDTree/Tagbar window
-nnoremap <silent> <Tab> :bnext<CR>
-autocmd FileType nerdtree nnoremap <buffer> <Tab> <Nop>
-autocmd FileType tagbar nnoremap <buffer> <Tab> <Nop>
+" scroll buffers with Ctrl-Shift-arrows
+nnoremap <silent> <C-S-Left> :bprev<CR>
+inoremap <silent> <C-S-Left> <c-o>:bprev<CR>
+snoremap <silent> <C-S-Left> <ESC><c-o>:bprev<CR>
+nnoremap <silent> <C-S-Right> :bnext<CR>
+inoremap <silent> <C-S-Right> <c-o>:bnext<CR>
+snoremap <silent> <C-S-Right> <ESC><c-o>:bnext<CR>
 
 " close help with ESC
 autocmd FileType help noremap <buffer> <Esc> :q<CR>
