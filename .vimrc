@@ -43,6 +43,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " display some search info
 Plugin 'vim-scripts/IndexedSearch'
+" don't advance cursor on word search
+Plugin 'haya14busa/vim-asterisk'
 
 " :KeepView to remember cursor position
 Plugin 'vim-scripts/anwolib'
@@ -215,9 +217,12 @@ set ignorecase
 set smartcase
 set viminfo='100,f1  " Save up to 100 marks, enable capital marks
 
+map * <Plug>(asterisk-z*)
+map g* <Plug>(asterisk-gz*)
+
 " serch word on doubleclick
-nnoremap <2-LeftMouse> *
-inoremap <2-LeftMouse> <c-o>*
+nmap <2-LeftMouse> g*
+imap <2-LeftMouse> <c-o>g*
 
 " use ESC to remove search highlight
 nnoremap <silent> <expr> <Esc> (v:hlsearch ? ':nohlsearch<CR>' : '<Esc>')
