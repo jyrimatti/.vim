@@ -122,7 +122,6 @@ syntax enable
 set t_Co=256 " Syntax highlighting should be in 256 colors
 
 colorscheme solarized
-set background=dark
 set guifont=Source\ Code\ Pro\ for\ Powerline
 
 set nocompatible                " Use vim rather than vi settings
