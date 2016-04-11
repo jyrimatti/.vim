@@ -273,7 +273,7 @@ set foldnestmax=5       " Deepest fold is 5 levels
 " Toggle folds with space, unless on outermost level
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 " Open all folds when opening file
-autocmd Syntax * normal zR
+set foldlevelstart=50
 
 
 
