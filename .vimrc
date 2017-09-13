@@ -132,7 +132,7 @@ set number                      " Its nice to see line numbers
 set backspace=indent,eol,start  " Allow backspace in insert mode
 set autoread                    " Reload files changed outside vim
 set hidden                      " Buffers can exist in the background
-set history=1000                " Store lots of :cmdline history (its not 1990)
+set history=10000               " Store lots of :cmdline history (its not 1990)
 set shellpipe=2>/dev/null>      " Don't dump distracting text to terminal during searches!
 set whichwrap+=<,>,[,]          " left/right wrap lines
 set clipboard=unnamed           " Use system clipboard
@@ -160,13 +160,10 @@ set keymodel=startsel,stopsel
 " allow entering command mode while in select mode
 snoremap : <C-o>:
 
-" turn Off Swap Files
-set noswapfile
-set nobackup
-set nowritebackup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
+set backup
+set writebackup
 
 
 " General behavior
